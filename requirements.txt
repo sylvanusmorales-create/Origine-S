@@ -1,0 +1,15 @@
+groq
+rich
+duckduckgo-search
+python-dotenv
+sounddevice
+soundfile
+numpy
+pyttsx3
+fastapi
+uvicorn[standard]
+python-multipart
+aiosqlite
+icalendar
+caldav
+anthropic
