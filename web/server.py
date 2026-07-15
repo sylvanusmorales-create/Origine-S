@@ -62,7 +62,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Origine S", lifespan=lifespan)
-app.mount("/static", StaticFiles(directory="web/static"), name="static")
+import pathlib
+BASE_DIR = pathlib.Path(__file__).parent.parent
+app.mount("/static", StaticFiles(directory=str(BASE_DIR / "web" / "static")), name="static")
 
 conversation_histories: dict[int, list] = {}
 stop_flags: dict[int, bool] = {}
@@ -70,7 +72,7 @@ stop_flags: dict[int, bool] = {}
 
 @app.get("/")
 async def root():
-    return FileResponse("web/static/index.html")
+    return FileResponse(str(BASE_DIR / "web" / "static" / "index.html"))
 
 
 @app.get("/api/health")
